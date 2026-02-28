@@ -1,50 +1,25 @@
-const canvas = document.getElementById("binaryCanvas");
+function draw() {
+    ctx.fillStyle = document.body.classList.contains("light")
+        ? "rgba(255,255,255,0.08)"
+        : "rgba(0,0,0,0.08)";
 
-if (canvas) {
-    const ctx = canvas.getContext("2d");
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    ctx.fillStyle = "orange";
+    ctx.font = fontSize + "px monospace";
 
-    const binary = "01";
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const drops = [];
+    for (let i = 0; i < drops.length; i++) {
 
-    for (let i = 0; i < columns; i++) {
-        drops[i] = 1;
-    }
-
-    function draw() {
-        ctx.fillStyle = "rgba(0,0,0,0.05)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = "orange";
-        ctx.font = fontSize + "px monospace";
-
-        for (let i = 0; i < drops.length; i++) {
+        // LOWER spawn rate
+        if (Math.random() > 0.97) {
             const text = binary[Math.floor(Math.random() * binary.length)];
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-            drops[i]++;
         }
+
+        if (drops[i] * fontSize > canvas.height) {
+            drops[i] = 0;
+        }
+
+        drops[i]++;
     }
-
-    setInterval(draw, 33);
-}
-
-const toggle = document.getElementById("themeToggle");
-
-if (toggle) {
-    toggle.onclick = function() {
-        document.body.classList.toggle("light");
-        localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
-    };
-}
-
-if (localStorage.getItem("theme") === "light") {
-    document.body.classList.add("light");
 }
