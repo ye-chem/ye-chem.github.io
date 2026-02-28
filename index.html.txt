@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unblocked Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="binaryCanvas"></canvas>
+
+<div class="navbar">
+    <h2>Unblocked Games</h2>
+    <a href="settings.html">Settings</a>
+</div>
+
+<div class="content">
+    <h1>Welcome</h1>
+    <a class="game-card" href="game1.html">Play First Game</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

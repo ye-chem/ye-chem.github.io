@@ -1,0 +1,63 @@
+:root {
+    --bg: black;
+    --text: orange;
+    --accent: orange;
+}
+
+body.light {
+    --bg: #f4f4f4;
+    --text: black;
+    --accent: darkorange;
+}
+
+body {
+    margin: 0;
+    font-family: monospace;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.navbar {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: rgba(0,0,0,0.7);
+}
+
+.navbar a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.game-card {
+    display: inline-block;
+    padding: 20px;
+    border: 2px solid var(--accent);
+    text-decoration: none;
+    color: var(--text);
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background: var(--accent);
+    border: none;
+    cursor: pointer;
+}
