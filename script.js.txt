@@ -1,25 +1,76 @@
-function draw() {
-    ctx.fillStyle = document.body.classList.contains("light")
-        ? "rgba(255,255,255,0.08)"
-        : "rgba(0,0,0,0.08)";
+// THEME SYSTEM
+const toggle = document.getElementById("themeToggle");
 
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+if(toggle){
+    toggle.onclick = () => {
+        document.body.classList.toggle("light");
+        localStorage.setItem("theme",
+            document.body.classList.contains("light") ? "light" : "dark"
+        );
+    };
+}
 
-    ctx.fillStyle = "orange";
-    ctx.font = fontSize + "px monospace";
+if(localStorage.getItem("theme") === "light"){
+    document.body.classList.add("light");
+}
 
-    for (let i = 0; i < drops.length; i++) {
-
-        // LOWER spawn rate
-        if (Math.random() > 0.97) {
-            const text = binary[Math.floor(Math.random() * binary.length)];
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        }
-
-        if (drops[i] * fontSize > canvas.height) {
-            drops[i] = 0;
-        }
-
-        drops[i]++;
+// ACTIVE NAV
+document.querySelectorAll(".nav-link").forEach(link=>{
+    if(link.href === window.location.href){
+        link.classList.add("active");
     }
+});
+
+// RANDOM CATCHPHRASES
+const phrases = [
+    "Over 800+ Games.",
+    "Bypassing boredom since 2026.",
+    "Definitely educational.",
+    "You have homework.",
+    "Productivity is optional."
+];
+
+const phraseElement = document.getElementById("catchphrase");
+if(phraseElement){
+    phraseElement.textContent =
+        phrases[Math.floor(Math.random()*phrases.length)];
+}
+
+// BINARY BACKGROUND
+const canvas = document.getElementById("binaryCanvas");
+if(canvas){
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const binary = "01";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function draw(){
+        ctx.fillStyle = document.body.classList.contains("light")
+            ? "rgba(255,255,255,0.08)"
+            : "rgba(0,0,0,0.08)";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+
+        ctx.fillStyle = document.body.classList.contains("light")
+            ? "darkorange"
+            : "orange";
+        ctx.font = fontSize + "px monospace";
+
+        for(let i=0;i<drops.length;i++){
+            if(Math.random() > 0.97){
+                const text = binary[Math.floor(Math.random()*2)];
+                ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+            }
+
+            if(drops[i]*fontSize > canvas.height){
+                drops[i]=0;
+            }
+            drops[i]++;
+        }
+    }
+
+    setInterval(draw,40);
 }
