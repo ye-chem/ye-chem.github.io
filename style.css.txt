@@ -1,6 +1,68 @@
+:root {
+    --bg: black;
+    --text: orange;
+}
+
+body.light {
+    --bg: white;
+    --text: black;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.navbar {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+}
+
+.nav-link {
+    padding: 6px 12px;
+    border: 2px solid orange;
+    text-decoration: none;
+    color: var(--text);
+}
+
+body:not(.light) .nav-link.active {
+    background: white;
+    color: black;
+}
+
+body.light .nav-link.active {
+    background: black;
+    color: white;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.games-grid {
+    margin-top: 40px;
+}
+
 .game-card {
     display: inline-block;
-    padding: 20px;
+    margin: 15px;
+    padding: 30px;
     border: 3px solid orange;
     text-decoration: none;
     color: var(--text);
@@ -17,4 +79,25 @@ body.light .game-card:hover {
     background: black;
     color: white;
     transform: scale(1.08);
+}
+
+.game-container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-top: 60px;
+}
+
+iframe {
+    width: 80%;
+    height: 600px;
+    border: 3px solid orange;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: orange;
+    border: none;
+    cursor: pointer;
 }
