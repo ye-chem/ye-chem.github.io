@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ye chem - Games</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="background"></div>
+<div class="logo-top">ye</div>
+<div class="nav-wrapper">
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="games.html">Games</a>
+    <a href="#">AI</a>
+    <a href="#">Music</a>
+    <a href="#">Apps</a>
+    <a href="#">Settings</a>
+    <div class="nav-right">
+      <div class="nav-divider"></div>
+      <div id="time"></div>
+      <div id="battery"></div>
+    </div>
+  </div>
+</div>
+<div class="games-top">
+  <div class="games-search">
+    <input type="text" id="searchInput" placeholder="Search games...">
+  </div>
+  <select class="filter-select" id="filterSelect">
+    <option value="az">A-Z</option>
+    <option value="za">Z-A</option>
+    <option value="popular">Popular</option>
+    <option value="newest">Newest</option>
+    <option value="favorited">Favorited</option>
+  </select>
+</div>
+<div class="games-grid"></div>
+<script src="script.js"></script>
+</body>
+</html> 
